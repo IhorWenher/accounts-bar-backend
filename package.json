@@ -1,6 +1,10 @@
 {
     "name": "accounts-bar-backend",
-    "version": "0.0.1",
+    "version": "1.0.0",
+    "engines": {
+        "node": "14.x",
+        "npm": "8.x"
+    },
     "description": "",
     "author": "",
     "private": true,
