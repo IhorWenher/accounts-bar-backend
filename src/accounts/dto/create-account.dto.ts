@@ -3,4 +3,5 @@ export class CreateAccountDto {
   readonly gameName: string;
   readonly sum: number;
   readonly currency: string;
+  readonly accountNumber: number;
 }

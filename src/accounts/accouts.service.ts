@@ -16,11 +16,43 @@ export class AccountsService {
   }
 
   async create(accountDto: CreateAccountDto): Promise<Account> {
-    const newAccount = new this.accountModel(accountDto);
+    const array = await this.accountModel.find().exec();
+    let newNumber = 1;
+
+    if (array.length !== 0) {
+      newNumber = array[array.length - 1].accountNumber + 1;
+    }
+
+    let numberForWeb = '';
+
+    if (newNumber === 1) {
+      numberForWeb = 'AN000001';
+    } else if (newNumber < 10) {
+      numberForWeb = 'AN00000' + newNumber.toString();
+    } else if (newNumber < 100) {
+      numberForWeb = 'AN000' + newNumber.toString();
+    } else if (newNumber < 1000) {
+      numberForWeb = 'AN00' + newNumber.toString();
+    } else if (newNumber < 10000) {
+      numberForWeb = 'AN0' + newNumber.toString();
+    } else if (newNumber < 100000) {
+      numberForWeb = 'AN' + newNumber.toString();
+    }
+
+    const newAccount = new this.accountModel({
+      ...accountDto,
+      accountNumber: newNumber,
+      accountNumberFront: numberForWeb,
+    });
+
     return newAccount.save();
   }
 
   async updateById(id: string, accountDto: UpdateAccountDto): Promise<Account> {
-    return this.accountModel.findByIdAndUpdate(id, accountDto, { new: true });
+    console.log(id, accountDto);
+
+    return this.accountModel.findByIdAndUpdate(id, accountDto, {
+      new: true,
+    });
   }
 }

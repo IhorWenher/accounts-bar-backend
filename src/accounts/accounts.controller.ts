@@ -2,11 +2,11 @@ import {
   Controller,
   Get,
   Post,
-  Put,
   Param,
   Body,
   HttpCode,
   HttpStatus,
+  Patch,
 } from '@nestjs/common';
 import { CreateAccountDto } from './dto/create-account.dto';
 import { UpdateAccountDto } from './dto/update-account.dto';
@@ -29,11 +29,11 @@ export class AccountsController {
     return this.accountsService.create(createAccountDto);
   }
 
-  @Put(':id')
+  @Patch(':id')
   @HttpCode(HttpStatus.OK)
   update(
+    @Param('id') id: string,
     @Body() updateAccountDto: UpdateAccountDto,
-    @Param(':id') id: string,
   ): Promise<Account> {
     return this.accountsService.updateById(id, updateAccountDto);
   }

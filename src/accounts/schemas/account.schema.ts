@@ -5,6 +5,12 @@ export type AccountDocument = Account & Document;
 
 @Schema({ versionKey: false, timestamps: true })
 export class Account {
+  @Prop({ default: 0 })
+  accountNumber: number;
+
+  @Prop({ default: '' })
+  accountNumberFront: string;
+
   @Prop({ required: true })
   company: string;
 
