@@ -1,4 +1,4 @@
-Welcome to ACCOUNTS-BAR-BACKEND!
+Welcome to the ACCOUNTS-BAR-BACKEND!
 
 Use next routes:
 
