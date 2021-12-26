@@ -9,7 +9,7 @@ POST 'https://accounts-bar-backend.herokuapp.com/accounts'
 body:
 {
 "company":"Nvidia",
-"gameName:"",
+"gameName:"Lara Croft",
 "sum": 1234,
 "currency": "Euro"
 }
